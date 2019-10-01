@@ -46,6 +46,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.plugin.common.PluginRegistry.ViewDestroyListener;
 import io.flutter.view.FlutterNativeView;
+import android.os.Handler;
 
 /**
  * WifiIotPlugin
@@ -57,6 +58,7 @@ public class WifiIotPlugin implements MethodCallHandler, EventChannel.StreamHand
     private Activity moActivity;
     private BroadcastReceiver receiver;
     private List<String> ssidsToBeRemovedOnExit = new ArrayList<String>();
+    final private Handler mainHandler = new Handler();
 
     private WifiIotPlugin(Activity poActivity) {
         this.moActivity = poActivity;
@@ -535,7 +537,7 @@ public class WifiIotPlugin implements MethodCallHandler, EventChannel.StreamHand
                 Boolean joinOnce = poCall.argument("join_once");
 
                 boolean connected = connectTo(ssid, password, security, joinOnce);
-                poResult.success(connected);
+                mainHandler.post(() -> poResult.success(connected));
             }
         }.start();
     }
@@ -565,7 +567,7 @@ public class WifiIotPlugin implements MethodCallHandler, EventChannel.StreamHand
                 }
 
                 boolean connected = connectTo(ssid, password, security, joinOnce);
-                poResult.success(connected);
+                mainHandler.post(() -> poResult.success(connected));
             }
         }.start();
     }
@@ -784,7 +786,7 @@ public class WifiIotPlugin implements MethodCallHandler, EventChannel.StreamHand
         if (!enabled) return false;
 
         boolean connected = false;
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 20; i++) {
             int networkId = moWiFi.getConnectionInfo().getNetworkId();
             if (networkId != -1) {
                 connected = networkId == updateNetwork;
