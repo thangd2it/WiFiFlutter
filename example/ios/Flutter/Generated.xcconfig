@@ -1,9 +1,9 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/Florian/Documents/flutter
-FLUTTER_APPLICATION_PATH=/Users/Florian/IdeaProjects/AlternaDarts/wifi_iot/example
-FLUTTER_TARGET=/Users/Florian/IdeaProjects/AlternaDarts/wifi_iot/example/lib/main.dart
-FLUTTER_BUILD_MODE=debug
+FLUTTER_ROOT=/Users/mango/Documents/flutter
+FLUTTER_APPLICATION_PATH=/Users/mango/Documents/Pacla/development/backhug-flutter/backhug-shared-flutter/WiFiFlutter/example
+FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
 SYMROOT=${SOURCE_ROOT}/../build/ios
-FLUTTER_FRAMEWORK_DIR=/Users/Florian/Documents/flutter/bin/cache/artifacts/engine/ios
-PREVIEW_DART_2=true
+FLUTTER_FRAMEWORK_DIR=/Users/mango/Documents/flutter/bin/cache/artifacts/engine/ios
+FLUTTER_BUILD_NAME=1.0.0
+FLUTTER_BUILD_NUMBER=1
